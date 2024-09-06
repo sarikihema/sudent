@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #searchBar {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student Information</h1>
+    
+    <input type="text" id="searchBar" onkeyup="searchStudents()" placeholder="Search for student names..">
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Roll No</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>123456</td>
+                <td>85</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>123457</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>Bob Johnson</td>
+                <td>123458</td>
+                <td>78</td>
+            </tr>
+            <tr>
+                <td>Alice Brown</td>
+                <td>123459</td>
+                <td>92</td>
+            </tr>
+            <tr>
+                <td>Tom Wilson</td>
+                <td>123460</td>
+                <td>88</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function searchStudents() {
+            // Get the value of the input field
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            // Get the table rows
+            let rows = document.querySelectorAll('#studentTable tbody tr');
+            
+            // Loop through rows and hide those that don't match the search
+            rows.forEach(function(row) {
+                let studentName = row.cells[0].textContent.toLowerCase();
+                if (studentName.includes(input)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
